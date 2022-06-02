@@ -1,0 +1,126 @@
+
+
+/* mobile */
+@media (max-width: 739px){
+    
+    .navbar__menu{
+        display: none;
+    }
+    .mobile-menu{
+        margin-right: 12px;
+    }
+    .book-date{
+        display: none;
+    }
+    .book-guest{
+        display: none;
+    }
+    .product__img{
+        width: 100%;
+    }
+    .logo{
+        display: none;
+    }
+    .login-logo{
+        font-size: 2rem;
+    }
+    .search-btn{
+        display: none;
+    }
+
+    .product__img{
+        width: 100%;
+        height: 15rem;
+        margin-top: 8px;
+    }
+    .mb-invisible{
+        display: none;
+    }
+
+    .recommend-img {
+        height: 19rem;
+        width: 103%;
+    }
+
+    .form-mobile{
+        order: -1;                
+    }
+
+    .account{
+        min-width: 280px;
+        margin-top: -.8rem;
+    }
+    .chi-tiet-phong{
+        padding: 3rem 1.5rem 0 2rem;
+    }
+    .close-chi-tiet-phong{
+        top: -2rem;
+    }
+
+    .tron-btn{
+        display: none;
+    }
+    .dat-phong__chon-ngay{
+        width: 90%;
+    }
+    .ten-hotel {
+        margin-top: 0;
+        font-size: 2.8rem;
+    }
+}
+/* may tinh bang */
+@media (min-width: 740px) and (max-width: 1023px){
+    .product__img{
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    .navbar__menu{
+        display: none;
+    }
+    .book-date{
+        display: none;
+    }
+    .book-guest{
+        display: none;
+    }
+    .discovery-label{
+        min-width: 100px;
+        font-size: 0.9rem;
+        padding: 0 2.8rem;
+    }
+    .chi-tiet-phong{
+        padding: 3rem 1.5rem 0 2rem;
+    }
+    .close-chi-tiet-phong{
+        top: -2rem;
+    }
+    .dat-phong__chon-ngay{
+        width: 90%;
+    }
+    .ten-hotel {
+        margin-top: 0;
+        font-size: 2.8rem;
+    }
+
+}
+
+@media (max-width:1023px) {
+    .mobile-menu{
+        display: block;
+    }
+
+    .mobile-menu__table{
+        display: block;
+    }
+
+    
+    .form-mobile{
+        order: -1;                
+    }
+
+    .account{
+        margin-top: -4rem;
+    }
+
+}

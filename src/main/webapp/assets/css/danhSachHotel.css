@@ -1,0 +1,168 @@
+.thanhPho{
+    margin-top: 50px;
+}
+
+.khach-san{
+    position: relative;
+    display: block;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: transform linear 0.1s;
+    will-change: transform;
+}
+.khach-san:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05);
+}
+.khach-san__img{
+    padding-top: 70%;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.khach-san__ten{
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    font-weight: 400;
+    margin: 10px;
+    color: var(--text-color);
+    height: 2.8rem;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+}
+.khach-san__gia{
+    display: flex;
+    margin: 10px 10px 6px;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.khach-san__gia-cu{
+    font-size: 1.2rem;
+    color: #666;
+    text-decoration: line-through;
+    margin-right: 10px;
+    max-width: 40%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.khach-san__gia-hien-tai{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+.khach-san__diachi{
+    max-width: 70%;
+    /* width: 100px; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.khach-san__action{
+    display: flex;
+    margin: 10px 10px;
+    justify-content: space-between;
+}
+.khach-san__like{
+    font-size: 1.2rem;
+}
+.khach-san__like-icon-fill{
+    color: red;
+    display: none;
+}
+.khach-san__like--active .khach-san__like-icon-fill{
+    display: inline-block;
+}
+.khach-san__like--active .khach-san__like-icon-empty{
+    display: none;
+}
+.khach-san__rating{
+    font-size: 0.7rem;
+    color: #ccc;
+    margin-left: auto;
+    /* transform: scale(0.1); */
+}
+.khach-san__star--gold{
+    color: var(--sao-vang);
+}
+.khach-san__origin{
+    display: flex;
+    margin: 0 10px;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    color: #000000a6;
+    justify-content: space-between;
+}
+.khach-san-favorite{
+    position: absolute;
+    top: 10px;
+    left:-4px ;
+    padding-right: 5px;
+    color: var(--primary-color);
+    background-color: currentColor;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+
+}
+.khach-san-favorite span{
+    color: var(--white-color);
+}
+.khach-san-favorite i{
+    color: var(--white-color);
+    font-size: .8rem;
+    margin: 0 2px 0 4px;
+}
+.khach-san-favorite:after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid currentColor;
+    border-left: 3px solid transparent;
+    filter: brightness(0.6);
+}
+.khach-san__giam-gia{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 36px;
+    /* font-weight: 500; */
+    font-size: 1.4rem;
+    text-align: center;
+    border-top-right-radius: 2px;
+    background-color: rgba(255,212,36,.9);
+}
+.khach-san__giam-gia::before{
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    border-width: 0 20px 4px;
+    border-style: solid;
+    border-color: transparent rgba(255,212,36,.9);
+}
+.khach-san__giam-gia-phan-tram{
+    margin-top: 4px;
+    color: #ee4d2d; 
+    display: block;
+}
+.khach-san__giam-gia-nhan{
+    color: var(--white-color);
+
+}
+.khach-san__phan-trang{
+    margin: 50px 0 30px;
+    padding: 0;
+}

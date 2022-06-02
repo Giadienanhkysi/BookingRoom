@@ -1,0 +1,106 @@
+:root{
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --header-height: 80px;
+    --search-height: 48px;
+    --header-color: #555;
+    --hover-color: #f65e39;
+    --base-color: #f87e60;
+    --sao-vang: #ffce3d;
+    --calendar-width: 36rem;
+    --calendar-height: 46rem;
+}
+
+*{
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+    line-height: 1.8rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+.btn--small{
+    font-size: 1.4rem;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 1.2rem 3.4rem;
+    box-sizing: border-box;
+    min-width: 120px;
+}
+.tron-btn{
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    border: none;
+    box-shadow: 0 0 7px -4px black;
+    z-index: 1;
+    cursor: pointer;
+    top: 40%;
+}
+.pre-btn{
+    left: 0;
+}
+.next-btn{
+    right:0;
+    top:40%;
+}
+.tron-btn.disabled{
+    opacity: 0.4;
+    cursor: default;
+}
+
+.phan-trang{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+.phan-trang-item{
+    margin: 0 8px;
+}
+.phan-trang-item--active .phan-trang-item__link{
+    color: var(--white-color);
+    background-color: var(--black-color);
+}
+.phan-trang-item--active .phan-trang-item__link:hover{
+    filter: brightness(1.3);
+}
+.phan-trang-item__link{
+    --height: 30px;
+    display: block;
+    color: #939393;
+    min-width: 40px;
+    text-align: center;
+    font-size: 1.6rem;
+    height: var(--height);
+    line-height: var(--height);
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.slide-list{
+    display: flex;            
+    position: relative;
+    max-width: 1200px;
+    overflow-x: auto;
+}
+.slide-list::-webkit-scrollbar{
+    visibility: hidden;
+}
+
+.slide-item{
+    margin: 5px;
+    position: relative;
+    transition: all .8s;        
+}
+.slide-img{
+    width: 340px;            
+    padding-top: 100%;    
+}
+.display-none{
+    display: none;
+}

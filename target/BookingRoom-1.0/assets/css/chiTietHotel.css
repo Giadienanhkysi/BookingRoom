@@ -1,0 +1,283 @@
+:root{
+    --booking-text-size: 1.6rem;
+}
+.danh-sach-anh{
+    list-style: none;
+    display: flex;
+    padding:0 ;
+}
+.full-width{
+    width: 100%;
+}
+.anh-item{
+    display: block;
+    padding: 0;    
+}
+.anh-item__anh{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;   
+}
+.noidung{
+    margin-top:50px;    
+}
+.gioi-thieu{
+    border-bottom: solid 1px #f2f2f2;
+    padding-bottom: 5rem ;
+}
+.ten-hotel{
+    margin-top:0;
+    font-size:3.8rem;
+}
+.dia-chi h2{
+    display: inline-block;
+    font-size: 1.8rem;
+    
+}
+.dia-chi span{
+    font-size: 1.6rem;
+
+}
+.mota{
+    font-size: 1.4rem;
+    line-height: 2.3rem;
+}
+.dacdiem{
+    background-color: #ebf3ff;
+    padding:20px;
+}
+.dacdiem_tieude{
+    margin-top:0;
+    font-size:2.2rem;
+}
+.dac-diem-list{
+    list-style: none;
+    padding: 0 ;
+}
+
+.dac-diem-item{
+    font-size:1.3rem;
+    /* padding: 0 20px; */
+    margin: 12px 0;
+}
+.thongtin-buasang-chitiet{
+    font-size:1.3rem
+}
+.button-wrapper{
+    display: flex;
+    justify-content: center;
+}
+.dat-phong-btn{    
+    height:var(--dat-phong-height);
+    font-size: 1.3rem;
+    border:none;
+    color: #fff;
+    background-color: var(--hover-color);
+}
+:root {
+    --dat-phong-height: 48px;
+  }
+.dat-phong__chon-ngay{
+    height: var(--dat-phong-height);
+    width: var(--calendar-width);
+    background-color: #fff;
+    border:none;
+    font-size: 1.4rem;    
+    box-sizing: border-box;
+    box-shadow: 0 0 7px 2px rgb(0 0 0 / 20%);
+    border-radius: 2%;
+    display:flex;
+    align-items: center;
+}
+.checkIn__wrapper, .checkOut__wrapper{
+    position: relative
+}
+
+.tim-phong-btn-wrapper{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 100%;
+}
+
+
+.tim-phong-btn :hover{
+    opacity: 0.8;
+}
+.tim-phong-btn{
+    width:50%;
+    height:50px;
+    font-size:1.4rem;
+    border: none;
+    border-radius:2px;
+    color: #fff;
+    background-color: var(--hover-color);
+}
+
+.lich-icon{
+    font-size:2.2rem;
+    color: rgb(0 0 0 / 30%);
+    margin-left: 20px;
+}
+
+.phong__chitiet{
+    font-size: 1.4rem;
+}
+.phong-item{
+    border: solid 1px rgba(0,0,0,0.5);
+    padding: 1rem;
+    border-radius:3px;
+    margin-top:4rem;
+    
+    /* position: relative; */
+}
+.phong__loai{
+    text-decoration: underline;
+    font-size:2.6rem;
+}
+.phong__loai:hover{
+    color: var(--hover-color);
+    cursor: pointer;
+}
+
+.phong__loai.disabled{
+    text-decoration: none;    
+}
+.phong__loai.disabled:hover{
+    color: black;
+    cursor: default;
+}
+.phong__dat{
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+}
+.tien-ich{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+.tien-ich-item{
+    border: solid 1px rgba(0,0,0,0.6);
+    margin: 2px 4px;
+    padding: 1px 2px;
+    border-radius:2px;
+}
+.so-luong-phong{
+    width: 40%;
+    height: var(--dat-phong-height);
+    font-size:1.6rem;
+
+}
+.gia-mota{
+    font-size:1.3rem;
+}
+.gia-cu{
+    font-size: 1.4rem;
+    text-decoration: line-through;
+}
+.gia-hien-tai{
+    color:var(--hover-color)
+}
+.dat-btn{
+    width: 10rem;
+    
+}
+.chi-tiet-phong-wrapper{
+    display:none;
+}
+.danh-sach-phong{
+    padding-bottom: 4rem;
+}
+.booking__date{
+    display: flex;
+}
+.booking__time-value{
+    margin-left: 3rem;
+}
+
+.chi-tiet-phong, .booking{
+    position: static;
+    z-index: 3;
+    padding: 3rem 0;
+    border-radius: 6px;
+    border: 1px solid black;
+    background-color: white;
+    width: 90%;
+    margin: auto;
+    margin-top: 5rem;
+}
+.kich-thuoc-phong-tieude{
+    display: inline-block
+}
+
+.kich-thuoc-phong{
+    font-size: 1.3rem;
+    margin-left: 3px;
+}
+.mota-phong{
+    font-size: 1.4rem;
+    line-height:2.2rem;
+}
+.close-chi-tiet-phong{
+    position: relative;
+    width:100%;
+
+}
+.close-icon{
+    font-size: 3.5rem;
+    position: absolute;
+    right: 2%;
+}
+.overlay.phong{
+    display: block;
+    overflow-y: scroll;
+}
+.ngay{
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-left: 2rem;
+    text-align: center;
+}
+.booking{
+    width: 30%;
+    padding: 3rem 2rem;
+}
+.ngay-nhan, .ngay-tra{
+    font-size:var(--booking-text-size);
+    border:none;
+    margin-left: 1rem;
+}
+.chon-gio{
+    font-size:var(--booking-text-size);
+    outline: none;
+}
+
+.booking-item{
+    margin-bottom: 2rem;
+}
+.booking-item-title{
+
+}
+.booking-item-value{
+    font-size: var(--booking-text-size);
+    margin-left:20px;
+}
+.booking__btn{
+    display: flex;
+    justify-content: space-between;
+}
+.booking__huy-btn{
+    background-color: #efefef;
+    color: var(--text-color);
+}
+.booking__xac-nhan-btn{
+    background-color: var(--hover-color);
+    color: var(--white-color);
+}
+.booking__item-wrapper{
+    display: flex;
+    justify-content: space-between;
+}

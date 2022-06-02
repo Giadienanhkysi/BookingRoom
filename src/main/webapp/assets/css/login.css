@@ -1,0 +1,174 @@
+
+.login-welcome{
+    background-image: linear-gradient(90deg,
+                    #f65e38 0,#f68a39 51%,#f65e38);
+    color: white;
+    padding: 4.8rem 0;
+}
+
+.login-welcome__header{
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    margin: 0 0 1rem 0;
+}
+
+.login-welcome__content{
+    font-size: 1.82rem;
+    line-height: 2.8rem;
+
+}
+
+.media__item{
+    margin-top: 4.8rem;
+}
+
+.media__item-img{
+    max-width: 100%;
+    height: 7rem;
+}
+
+.media__item-header{
+    margin: 1.5rem 0 0.875rem;
+    font-size: 1.8rem;    
+}
+
+.media__item-content{    
+    font-size: 1.6rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.account{
+    position: relative;
+    min-width: 400px;
+    background-color: white;
+    margin-top: -12rem;
+    padding: 3.2rem;
+    box-shadow: 0 9px 46px 8px rgb(0 0 0 / 2%), 0 24px 38px 3px rgb(0 0 0 / 4%), 0 11px 15px -7px rgb(0 0 0 / 5%);
+    border-radius: 1rem;
+}
+
+.account__header{
+    font-size: 2.5rem;
+    margin: 0 0 4rem 0;
+}
+
+.account__title{
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin: 28px 0 18px 0;
+}
+
+.account__input{
+    padding: 0.8rem 2rem;
+    border-radius: 3rem;
+    font-size: 1.4rem;
+    height: 5rem;
+    width: 100%;
+    border: 1px solid #e6e6e6;
+    outline: none;    
+}
+
+.account__input:focus{
+    border: 1px solid red;
+    box-shadow: 0 0 2px 2px rgba(255, 0, 0, 0.2);
+}
+
+.account__icon{
+    position: absolute;
+    top: 30%;
+    right: 6%;
+    font-size: 1.8rem;
+}
+
+.phone-btn{
+    display: flex;
+    position: relative;
+    align-items: center;
+    font-size: 1.4rem;    
+    background-color: #f6f6f6;
+}
+
+.phone-btn::after{
+    content: "";
+    position: absolute;
+    border: solid 6px transparent;
+    border-top-color: black;
+    right: 30%;
+    top: 40%;
+}
+
+.account__body{
+    margin-top: 32px;
+}
+.submit{
+    width: 100%;
+    height: 5.4rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 3rem;
+    margin-top: 1.8rem;
+}
+
+.submit--inter{
+    color: white;
+    font-weight: 500;
+    background-image: linear-gradient(90deg,
+    #f65e38 0,#f68a39 51%,#f65e38);
+    box-shadow: 0 4px 12px 0 rgb(246 116 57 / 40%);
+    background-size: 200%;
+}
+
+.submit--exter{
+    background-color: white;
+    border: solid 1px #e6e6e6;      
+    color: #666;
+}
+
+.quest{
+    margin-top: 3.8rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.quest p{
+    font-size: 1.4rem;
+    margin-top: 4rem;
+}
+
+.login-link{
+    color: var(--hover-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.policy{
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.is-relative{
+    position: relative;
+}
+
+.facebook-icon{    
+    font-size: 1.8rem;
+    color: #3a5999;
+}
+
+.google-icon{
+    display: block;
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.login-input{
+    margin-top: 2rem;
+}
+.margin-t42{
+    margin: 4.2rem 0 0 0;    
+}
