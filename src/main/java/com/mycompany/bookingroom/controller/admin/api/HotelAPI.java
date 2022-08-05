@@ -3,6 +3,7 @@ package com.mycompany.bookingroom.controller.admin.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mycompany.bookingroom.model.Hotel;
 import com.mycompany.bookingroom.service.IHotelService;
+import com.mycompany.bookingroom.util.CheckUtil;
 import com.mycompany.bookingroom.util.JsonUtil;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,13 +24,17 @@ public class HotelAPI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("hotels", hotelService.findAll());
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        try(OutputStream out = response.getOutputStream()){         
-              List<Hotel> hotels  = (List<Hotel>) request.getAttribute("hotels");
-              ObjectMapper mapper = new ObjectMapper();
-              mapper.writeValue(out, hotels);
+//        response.setHeader("Access-Control-Allow-Origin", "*");
+        try(OutputStream out = response.getOutputStream()){
+            String id = request.getParameter("id");
+            String location = request.getParameter("location");
+            if(id != null){ //n
+                getHotelById(id, out);
+            }else{
+                getHotelsByLocation(location, out);                
+            }
         }
     }
 
@@ -40,6 +45,7 @@ public class HotelAPI extends HttpServlet {
                
         request.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         BufferedReader reader = request.getReader();
         ObjectMapper mapper = new ObjectMapper();
         Hotel hotel = JsonUtil.toJsonUtil(reader).toModel(Hotel.class);
@@ -64,6 +70,7 @@ public class HotelAPI extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
         BufferedReader reader =  request.getReader();
@@ -78,4 +85,25 @@ public class HotelAPI extends HttpServlet {
         return "Short description";
     }
 
+    private void getHotelsByLocation(String location, OutputStream out) throws ServletException, IOException{
+            List<Hotel> hotels;
+            if (location == null){
+                hotels = hotelService.findAll() ;
+            }else{
+                hotels = hotelService.findAllByLocation(location);
+            }
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.writeValue(out, hotels);        
+    }
+    private void getHotelById(String id, OutputStream out) throws IOException{
+            try{
+                if(CheckUtil.isInteger(id)){
+                    Hotel hotel =(Hotel) hotelService.findById(Integer.parseInt(id));
+                    ObjectMapper mapper = new ObjectMapper();
+                    mapper.writeValue(out, hotel);
+                }
+            }catch(IOException | NumberFormatException ex){
+                ex.printStackTrace();
+            }
+    }
 }

@@ -3,8 +3,8 @@ package com.mycompany.bookingroom.model;
 import java.sql.Timestamp;
 
 public class User {
-	private int id;
-	private String username, password, first_name, last_name, gender, 
+	private Integer id;
+	private String username, password, firstname, lastname, gender, 
 	phone, email, address, token;
 	private Timestamp created_at, updated_at, last_login;
 	
@@ -12,14 +12,14 @@ public class User {
 
 	}
 
-	public User(int id, String username, String password, String first_name, String last_name, String gender,
+	public User(Integer id, String username, String password, String firstname, String lastname, String gender,
 			String phone, String email, String address, String token, Timestamp created_at, Timestamp updated_at,
 			Timestamp last_login) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.gender = gender;
 		this.phone = phone;
 		this.email = email;
@@ -30,13 +30,13 @@ public class User {
 		this.last_login = last_login;
 	}
 
-	public User(int id, String username, String password, String first_name, String last_name, String gender,
+	public User(Integer id, String username, String password, String firstname, String lastname, String gender,
 			String phone, String email, String address, String token) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.gender = gender;
 		this.phone = phone;
 		this.email = email;
@@ -44,12 +44,12 @@ public class User {
 		this.token = token;
 	}
 
-	public User(String username, String password, String first_name, String last_name, String gender, String phone,
+	public User(String username, String password, String firstname, String lastname, String gender, String phone,
 			String email, String address, String token) {
 		this.username = username;
 		this.password = password;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.gender = gender;
 		this.phone = phone;
 		this.email = email;
@@ -57,11 +57,11 @@ public class User {
 		this.token = token;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -81,20 +81,20 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getGender() {

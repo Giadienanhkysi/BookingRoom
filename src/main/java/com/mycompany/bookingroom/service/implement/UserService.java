@@ -25,7 +25,7 @@ public class UserService implements IUserService {
 
     @Override
     public User save(User user) {
-        int id = userDAO.save(user);
+        Integer id = userDAO.save(user);
         return userDAO.findById(id);
     }
 
@@ -42,5 +42,10 @@ public class UserService implements IUserService {
     @Override
     public void delete(Integer id) {
         userDAO.delete(id);
+    }
+
+    @Override
+    public User findByUsernameAndPassword(String username, String password) {
+        return userDAO.findByUsernameAndPassword( username, password);
     }
 }

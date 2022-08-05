@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css">    
+    <link rel="stylesheet" href="assets/css/grid.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/adminLogin.css">
+    <title>Đăng nhập trang quản lý</title>
+</head>
+<body>
+        <div class="admin-login-form">
+            <form action="" id="form-1" class="form">
+                <h1 class="account__header">Đăng nhập</h1>
+                <div class="">
+                    <label for="" class="account__title">Đăng nhập trang quản lý</label>
+                    <div class="form-group login-input">  
+                        <div class="input-wrapper is-relative">
+                            <input name ="username" placeholder="Tài khoản" type="text" class="form-input account__input is-relative"  id="username">
+                            <i class="far fa-user account__icon"></i>
+                        </div>     
+                        <span class="form-message"></span>
+                    </div>     
+    
+                    <div class="form-group is-relative login-input"> 
+                        <div class="input-wrapper is-relative">
+                            <input name ="password" placeholder="Mật khẩu" type="password" class="form-input account__input is-relative" id="password">
+                            <i class="fas fa-lock account__icon"></i>
+                        </div>
+                        <span class="form-message"></span>
+                    </div>
+                </div>                                
+                
+                <div class="account__body">
+                    <button class="submit submit--inter">Đăng nhập</button>
+                </div>
+    
+            </form>
+        </div>
+
+    <script src="assets/js/validator.js" type="module"></script>
+    <script src="assets/js/adminLogin.js" type="module"></script>
+    
+</body>
+</html>

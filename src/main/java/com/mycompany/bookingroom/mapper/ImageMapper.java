@@ -16,6 +16,7 @@ public class ImageMapper implements RowMapper<Image>{
             image.setId(resultSet.getInt("ID"));
             image.setRoom_id(resultSet.getInt("ROOM_ID"));
             image.setHotel_id(resultSet.getInt("HOTEL_ID"));
+            image.setSlide_id(resultSet.getInt("SLIDE_ID"));
             image.setLink(resultSet.getString("LINK"));
             return image;
         } catch (SQLException ex) {

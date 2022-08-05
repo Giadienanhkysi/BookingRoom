@@ -3,6 +3,7 @@ package com.mycompany.bookingroom.controller.admin.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mycompany.bookingroom.model.Image;
 import com.mycompany.bookingroom.service.implement.ImageService;
+import com.mycompany.bookingroom.util.CheckUtil;
 import com.mycompany.bookingroom.util.JsonUtil;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,25 +42,35 @@ public class ImageAPI extends HttpServlet {
         response.setHeader("Access-Control-Allow-Origin", "*");
         String hotelId = request.getParameter("hotelId");
         String roomId = request.getParameter("roomId");
+        String slideId = request.getParameter("slideId");
         String qty = request.getParameter("qty");
-        if(hotelId != null){
+        if(hotelId != null && CheckUtil.isInteger(hotelId)){
             if(qty != null){
-                request.setAttribute("Images", imageService.findByHotelId(Integer.parseInt(hotelId)).get(0));
+                List<Image> images = imageService.findByHotelId(Integer.parseInt(hotelId));
+                if(images != null && images.size() > 0)
+                    request.setAttribute("Images", images.get(0));
             }else{
                 request.setAttribute("Images", imageService.findByHotelId(Integer.parseInt(hotelId)));
             }
-        }else if(roomId!=null){
+        }else if(roomId!=null && CheckUtil.isInteger(roomId)){
             if(qty != null){
-                request.setAttribute("Images", imageService.findByRoomId(Integer.parseInt(roomId)).get(0));
+                List<Image> images = imageService.findByRoomId(Integer.parseInt(roomId));
+                if(images != null && images.size() > 0)
+                    request.setAttribute("Images", images.get(0));
             }else{
                 request.setAttribute("Images", imageService.findByRoomId(Integer.parseInt(roomId)));
             }
+        }
+        else if(slideId!=null && CheckUtil.isInteger(slideId)){
+            request.setAttribute("Images", imageService.findBySlideId(Integer.parseInt(slideId)));
+            
         }
         try(OutputStream out = response.getOutputStream()){
            ObjectMapper mapper = new ObjectMapper();
            mapper.writeValue(out, request.getAttribute("Images"));
         }
-    }    
+    }
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {            
@@ -77,17 +88,21 @@ public class ImageAPI extends HttpServlet {
                 Image image = new Image();
                 String hotelId = request.getParameter("hotelId");
                 String roomId = request.getParameter("roomId");
-                if(hotelId != null && !hotelId.equalsIgnoreCase(""))
+                String slideId = request.getParameter("slideId");                
+                if(CheckUtil.isInteger(hotelId))
                     image.setHotel_id(Integer.parseInt(hotelId));
                 else
                     image.setHotel_id(null);
-                if(roomId != null && !roomId.equalsIgnoreCase("")){
+                if(CheckUtil.isInteger(roomId))
                     image.setRoom_id(Integer.parseInt(roomId));
-                }else{
+                else
                     image.setRoom_id(null);
-                }
+                if(CheckUtil.isInteger(slideId))
+                    image.setSlide_id(Integer.parseInt(slideId));
+                else
+                    image.setSlide_id(null);
                 String fileName = Path.of(part.getSubmittedFileName()).getFileName().toString();
-                image.setLink("/images"+fileName);
+                image.setLink("images/" + fileName.replaceAll("[\\(\\)\\s+]", ""));
                 images.add(image);
                 imgParts.add(part);
             }
@@ -107,10 +122,23 @@ public class ImageAPI extends HttpServlet {
         response.setContentType("application/json;charset=utf-8");
         BufferedReader reader =  request.getReader();
         ObjectMapper mapper = new ObjectMapper();
-        Image image = JsonUtil.toJsonUtil(reader).toModel(Image.class);
         String realPath = request.getServletContext().getRealPath("/images");
         realPath = realPath.split("images")[0];
-        imageService.delete(image.getId(),realPath);
+        String hotelId = request.getParameter("hotelId");
+        String roomId = request.getParameter("roomId");
+        String slideId = request.getParameter("slideId");
+        
+        if(CheckUtil.isInteger(hotelId)){
+            imageService.deleteAllImageByForeignKey(Integer.parseInt(hotelId), realPath, "hotel_id");
+        }else if(CheckUtil.isInteger(roomId)){
+            imageService.deleteAllImageByForeignKey(Integer.parseInt(roomId), realPath, "room_id");
+        }else if(CheckUtil.isInteger(slideId)){
+            imageService.deleteAllImageByForeignKey(Integer.parseInt(slideId), realPath, "slide_id");
+        }
+        else{
+            Image image = JsonUtil.toJsonUtil(reader).toModel(Image.class);
+            imageService.delete(image.getId(),realPath);
+        }
         mapper.writeValue(response.getOutputStream(), "{}");
     }
    

@@ -1,0 +1,185 @@
+<%-- 
+    Document   : login.jsp
+    Created on : Jun 21, 2022, 5:44:14 PM
+    Author     : hensh
+--%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css">    
+        <link rel="stylesheet" href="assets/css/grid.css">
+        <link rel="stylesheet" href="assets/css/base.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/login.css">
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        <title>Đặt phòng nhanh chóng</title>
+    </head>
+    <body>
+        <div class="main">
+            <header class="header">
+                <div class="grid wide">
+                    <div class="row">
+                        <div class="col l-6 m-5 c-5  logo-and-search">                        
+                            <h1><a class="login-logo" href='<c:url value="/trang-chu"/>'> Booking Room</a></h1>
+
+
+                        </div>
+
+                        <nav class="navbar">
+                            <ul class="navbar__menu">                           
+                                <li class="navbar__menu-item"><a href='<c:url value="/trang-chu"/>'>Trang chủ</a></li>
+                                <c:if test="${not empty USER}">
+                                    <li class="navbar__menu-item"><a href="#">Chào, ${USER.firstname}</a></li>
+                                    <li class="navbar__menu-item"><a href="/thoat?action=logout">Đăng xuất</a></li>                                    
+                                </c:if>
+                                <c:if test="${empty USER}">
+                                    <li class="navbar__menu-item"><a href="register.jsp">Đăng ký</a></li>
+                                </c:if>
+                            </ul>
+                            <div class="mobile-menu">
+                                <label for="menu-checkbox" class="mobile-menu__btn">
+                                    <i class="fas fa-bars"></i>
+                                </label>
+                                <input class="menu-checkbox" id="menu-checkbox" type="checkbox">
+                                <label for="menu-checkbox" class="overlay"></label>
+                                <div class="mobile-menu__table">
+                                    <div class="mobile-menu__header">
+                                        <h1>MENU</h1>
+                                        <label for="menu-checkbox" class="mobile-menu__close">
+                                            <i class="fas fa-times"></i>
+                                        </label>                                    
+                                    </div>
+                                    <ul class="mobile-menu__list">
+                                        <li class="navbar__menu-item mobile-menu__item"><a class="mobile-menu__item-link" href='<c:url value="/trang-chu"/>'>Trang chủ</a></li>
+                                        <li class="navbar__menu-item mobile-menu__item"><a class="mobile-menu__item-link" href="register.jsp">Đăng ký</a></li>
+                                        <li class="navbar__menu-item mobile-menu__item"><a class="mobile-menu__item-link" href='<c:url value="/dang-nhap?action=login"/>'>Đăng nhập</a></li>                                    
+                                    </ul>
+                                </div>
+                            </div>                        
+                        </nav>
+                    </div>                
+
+
+                </div>
+
+            </header>                
+
+            <div class="container">
+                <div class="login-welcome">
+                    <div class="grid wide">
+                        <div class="row">
+                            <div class="col l-12 m-12 c-12">                        
+                                <h2 class="login-welcome__header">Đăng ký thành viên - Tích điểm thưởng và nhận ưu đãi</h2>
+                                <p class="login-welcome__content">Nhanh chóng, tiện lợi và an toàn. Đăng ký liền tay, rinh ngay quyền lợi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="grid wide">
+                    <div class="row">
+                        <div class="col l-8 m-12 c-12">
+                            <div class="media">
+                                <div class="row">
+                                    <div class="col l-6 m-12 c-12">
+                                        <div class="media__item">
+                                            <img src="assets/img/coins@2x.png" alt="" class="media__item-img">
+                                            <h2 class="media__item-header">Tích điểm nhanh chóng</h2>
+                                            <p class="media__item-content">Tích điểm đối với mỗi lượt đặt chỗ thành công.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col l-6 m-12 c-12">
+                                        <div class="media__item">
+                                            <img src="assets/img/top-sales@2x.png" alt="" class="media__item-img">
+                                            <h2 class="media__item-header">Tiện ích thông minh</h2>
+                                            <p class="media__item-content">Check-in và kiểm tra hóa đơn thanh toán kể cả khi không có kết nối mạng. Hoàn tiền nhanh gọn. Đổi lịch dễ dàng.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col l-6 m-12 c-12">
+                                        <div class="media__item">
+                                            <img src="assets/img/wallet@2x.png" alt="" class="media__item-img">
+                                            <h2 class="media__item-header">Thanh toán đơn giản</h2>
+                                            <p class="media__item-content">Phương thức thanh toán tiện lợi, an toàn. Tích hợp chức năng lưu thẻ để đặt phòng lần sau.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col l-6 m-12 c-12">
+                                        <div class="media__item">
+                                            <img src="assets/img/backpack@2x.png" alt="" class="media__item-img">
+                                            <h2 class="media__item-header">Ưu đãi mỗi ngày</h2>
+                                            <p class="media__item-content">Nhận thông báo ưu đãi từ chúng tôi khi có kế hoạch du lịch để lựa chọn và đặt ngay cho mình một chỗ ở phù hợp, tiện nghi với giá tốt nhất.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col l-4 m-12 c-12 form-mobile">
+                            <div class="account">
+                                <form action="" id="form-1">
+                                    <h1 class="account__header">Đăng nhập</h1>
+                                    <div class="">
+                                        <label for="" class="account__title">Đăng nhập để trải nghiệm</label>
+                                        <div class="form-group login-input">  
+                                            <div class="input-wrapper is-relative">
+                                                <input name ="username" placeholder="Tài khoản" type="text" class="form-input account__input is-relative"  id="username">
+                                                <i class="far fa-user account__icon"></i>
+                                            </div>                                      
+                                            <span class="form-message"></span>
+                                        </div>     
+
+                                        <div class="form-group is-relative login-input"> 
+                                            <div class="input-wrapper is-relative">
+                                                <input name ="password" placeholder="Mật khẩu" type="password" class="form-input account__input is-relative" id="password">
+                                                <i class="fas fa-lock account__icon"></i>
+                                            </div>
+                                            <span class="form-message"></span>
+                                        </div>
+                                    </div>                                
+
+                                    <div class="account__body">
+                                        <button class="submit submit--inter">Đăng nhập</button>
+                                        <div class="quest">
+                                            <div class="margin-t42">Quên mật khẩu ? <a href="" class="login-link">Nhấp vào đây</a></div>                                        
+                                            <div class="margin-t42">Bạn chưa có tài khoản? <a href="register.html" class="login-link">Đăng ký</a></div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="grid wide"></div>
+                <div class="row">
+                    <div class="col l-12">
+                        <p>© 2022 Lập trình Website đặt phòng khách sạn</p>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/validator.js" type="module"></script>
+        <script src="assets/js/login.js" type="module"></script>
+
+
+    </body>
+</html>

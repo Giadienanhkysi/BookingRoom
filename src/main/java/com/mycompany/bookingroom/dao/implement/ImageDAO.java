@@ -37,14 +37,14 @@ public class ImageDAO extends AbstractDAO<Image> implements IImageDAO {
 
     @Override
     public Integer save(Image Image) {
-        String sql = "INSERT dbo.Images (ROOM_ID, HOTEL_ID, LINK) VALUES(?, ?, ?)";
-        return insert(sql, Image.getRoom_id(), Image.getHotel_id(), Image.getLink());
+        String sql = "INSERT dbo.Images (ROOM_ID, HOTEL_ID, SLIDE_ID, LINK) VALUES(?, ?, ?, ?)";
+        return insert(sql, Image.getRoom_id(), Image.getHotel_id(), Image.getSlide_id(), Image.getLink());
     }
 
     @Override
     public void update(Image Image) {
-        String sql = "UPDATE dbo.Images SET Room_id = ?, Hotel_id = ?, Link = ? WHERE id = ?";
-        update(sql, Image.getRoom_id(), Image.getHotel_id(), Image.getLink(), Image.getId());
+        String sql = "UPDATE dbo.Images SET Room_id = ?, Hotel_id = ?, Slide_id = ?, Link = ? WHERE id = ?";
+        update(sql, Image.getRoom_id(), Image.getHotel_id(), Image.getSlide_id(), Image.getLink(), Image.getId());
     }
 
     @Override
@@ -54,9 +54,15 @@ public class ImageDAO extends AbstractDAO<Image> implements IImageDAO {
     }
 
     @Override
-    public Image findBySlideId(Integer id) {
+    public List<Image> findBySlideId(Integer id) {
         String sql = "SELECT * FROM dbo.Images WHERE Slide_ID = ?";
         List<Image> images = query(sql, new ImageMapper(), id);
-        return images.size() > 0 ? images.get(0) : null;
+        return images;
+    }
+
+    @Override
+    public void deleteAllImageByForeignKey(Integer id, String option) {
+        String sql = "DELETE FROM dbo.Images WHERE " + option + " = ?";
+        update(sql, id);
     }
 }

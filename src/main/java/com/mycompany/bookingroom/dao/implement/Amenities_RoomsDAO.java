@@ -55,4 +55,10 @@ public class Amenities_RoomsDAO extends AbstractDAO<Amenities_Rooms> implements 
         update(sql, ar.getRoom_id(), ar.getAmenities_id());
     }
 
+    @Override
+    public void deleteByRoomId(Integer roomId) {
+        String sql = "DELETE FROM dbo.Amenities_Rooms WHERE Room_ID = ?";
+        update(sql, roomId);
+    }
+
 }

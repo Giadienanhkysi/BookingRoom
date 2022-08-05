@@ -1,6 +1,7 @@
 package com.mycompany.bookingroom.controller.admin.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mycompany.bookingroom.model.Amenities;
 import com.mycompany.bookingroom.model.Amenities_Rooms;
 import com.mycompany.bookingroom.service.IAmenities_RoomsService;
 import com.mycompany.bookingroom.util.CheckUtil;
@@ -32,8 +33,8 @@ public class AmenitiesRoomAPI extends HttpServlet {
         try(PrintWriter out = response.getWriter()){
             ObjectMapper mapper = new ObjectMapper();
             if(CheckUtil.isInteger(roomId)){
-                List<Amenities_Rooms> amenities_Rooms  = (List<Amenities_Rooms>) amenitiesRoomsService
-                                                        .findByRoomId(Integer.parseInt(roomId));
+                List<Amenities> amenities_Rooms  = (List<Amenities>) amenitiesRoomsService
+                                                        .findAmenitiesByRoomId(Integer.parseInt(roomId));
                 mapper.writeValue(out, amenities_Rooms);
             }
         
@@ -47,10 +48,18 @@ public class AmenitiesRoomAPI extends HttpServlet {
         response.setContentType("application/json;charset=utf-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
         BufferedReader reader = request.getReader();
+        String mode = request.getParameter("mode");
         ObjectMapper mapper = new ObjectMapper();
-        Amenities_Rooms amenities_Rooms = JsonUtil.toJsonUtil(reader).toModel(Amenities_Rooms.class);
-        amenitiesRoomsService.save(amenities_Rooms);
-        mapper.writeValue(response.getOutputStream(), amenities_Rooms);
+        if(mode.equalsIgnoreCase("multiple")){
+            List<Amenities_Rooms> amenities_Rooms = JsonUtil.toJsonUtil(reader).toListModel(Amenities_Rooms.class);
+            amenitiesRoomsService.saveMultiple(amenities_Rooms);
+            mapper.writeValue(response.getOutputStream(), amenities_Rooms);
+
+        }else{
+            Amenities_Rooms amenities_Rooms = JsonUtil.toJsonUtil(reader).toModel(Amenities_Rooms.class);
+            amenitiesRoomsService.save(amenities_Rooms);            
+            mapper.writeValue(response.getOutputStream(), amenities_Rooms);
+        }
         
     }
     @Override
@@ -72,10 +81,15 @@ public class AmenitiesRoomAPI extends HttpServlet {
         response.setContentType("application/json;charset=utf-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
         BufferedReader reader =  request.getReader();
+        String roomId = request.getParameter("roomId");
         ObjectMapper mapper = new ObjectMapper();
-        Amenities_Rooms amenities_Rooms = JsonUtil.toJsonUtil(reader).toModel(Amenities_Rooms.class);
-        amenitiesRoomsService.delete(amenities_Rooms);
-        mapper.writeValue(response.getOutputStream(), "{}");
+        if(CheckUtil.isInteger(roomId)){
+            amenitiesRoomsService.deleteByRoomId(Integer.parseInt(roomId));
+        }else{
+            Amenities_Rooms amenities_Rooms = JsonUtil.toJsonUtil(reader).toModel(Amenities_Rooms.class);
+            amenitiesRoomsService.delete(amenities_Rooms);
+        }
+            mapper.writeValue(response.getOutputStream(), "{}");
     }
     
     @Override

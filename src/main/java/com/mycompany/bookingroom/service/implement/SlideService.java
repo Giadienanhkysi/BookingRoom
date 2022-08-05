@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.mycompany.bookingroom.dao.ISlideDAO;
 import com.mycompany.bookingroom.model.Slide;
+import com.mycompany.bookingroom.model.SlideImage;
 import com.mycompany.bookingroom.service.ISlideService;
 import javax.inject.Inject;
 
@@ -41,5 +42,10 @@ public class SlideService implements ISlideService {
     @Override
     public void delete(Integer id) {
         slideDAO.delete(id);
+    }
+
+    @Override
+    public List<SlideImage> findSlideImageByGroup(Integer grp) {
+         return slideDAO.findSlideImageByGroup(grp);
     }
 }

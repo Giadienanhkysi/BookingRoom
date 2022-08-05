@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <title>Đặt phòng homestay nhanh chóng</title>
+    <title>Đặt phòng nhanh chóng</title>
 </head>
 <body>
     <div class="main">
@@ -118,18 +118,24 @@
 
                     <div class="col l-4 m-12 c-12 form-mobile">
                         <div class="account">
-                            <form action="">
+                            <form action="" id="form-1">
                                 <h1 class="account__header">Đăng nhập</h1>
                                 <div class="">
                                     <label for="" class="account__title">Đăng nhập để trải nghiệm</label>
-                                    <div class="is-relative login-input">                                        
-                                        <input placeholder="Địa chỉ email" type="text" class="account__input is-relative">
-                                        <i class="far fa-envelope account__icon"></i>
+                                    <div class="form-group login-input">  
+                                        <div class="input-wrapper is-relative">
+                                            <input name ="username" placeholder="Tài khoản" type="text" class="form-input account__input is-relative"  id="username">
+                                            <i class="far fa-user account__icon"></i>
+                                        </div>                                      
+                                        <span class="form-message"></span>
                                     </div>     
 
-                                    <div class="is-relative login-input">                                        
-                                        <input placeholder="Mật khẩu" type="password" class="account__input is-relative">
-                                        <i class="fas fa-lock account__icon"></i>
+                                    <div class="form-group is-relative login-input"> 
+                                        <div class="input-wrapper is-relative">
+                                            <input name ="password" placeholder="Mật khẩu" type="password" class="form-input account__input is-relative" id="password">
+                                            <i class="fas fa-lock account__icon"></i>
+                                        </div>
+                                        <span class="form-message"></span>
                                     </div>
                                 </div>                                
                                 
@@ -138,24 +144,6 @@
                                     <div class="quest">
                                         <div class="margin-t42">Quên mật khẩu ? <a href="" class="login-link">Nhấp vào đây</a></div>                                        
                                         <div class="margin-t42">Bạn chưa có tài khoản? <a href="register.html" class="login-link">Đăng ký</a></div>
-                                        <div class="margin-t42" >Hoặc</div>
-                                    </div>
-                                    <div class="margin-t42">
-                                        <button class="submit submit--exter is-relative">Đăng nhập với Facebook
-                                            <i class="fab fa-facebook-square account__icon facebook-icon"></i>
-                                        </button>
-                                        <button class="submit submit--exter is-relative">Đăng nhập với Google
-                                            <div class = "account__icon google-icon"href="">
-                                                <svg version="1.1" viewBox="0 0 16 16" class="is-absolute svg-icon svg-fill">
-                                                    <g fill="none">
-                                                        <path pid="0" fill="#557EBF" d="M15.85 8.2c0-.55-.05-1.1-.15-1.65H8.15v3.1h4.3c-.2 1-.75 1.85-1.6 2.4v2h2.6c1.5-1.4 2.4-3.45 2.4-5.85z"></path>
-                                                        <path pid="1" fill="#36A852" d="M8.15 16c2.15 0 3.95-.7 5.3-1.95l-2.6-2c-.7.5-1.65.75-2.7.75-2.1 0-3.85-1.4-4.5-3.3H1v2.05C2.35 14.2 5.05 16 8.15 16z"></path>
-                                                        <path pid="2" fill="#F9BC15" d="M3.7 9.5c-.15-.5-.25-1-.25-1.5s.1-1.05.25-1.5V4.4H1C.45 5.5.15 6.7.15 8c0 1.3.3 2.5.85 3.6l2.7-2.1z"></path>
-                                                        <path pid="3" fill="#EA4535" d="M8.15 3.2c1.15 0 2.25.4 3.05 1.2l2.3-2.3C12.15.8 10.3 0 8.15 0 5.05 0 2.35 1.8 1 4.4l2.7 2.1c.6-1.9 2.4-3.3 4.45-3.3z"></path>
-                                                    </g>
-                                                </svg>
-                                            </div>                                        
-                                        </button>
                                     </div>
                                 </div>
 
@@ -175,5 +163,9 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/validator.js" type="module"></script>
+    <script src="assets/js/login.js" type="module"></script>
+
+
 </body>
 </html>

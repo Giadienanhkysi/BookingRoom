@@ -39,6 +39,11 @@ public class HotelService implements IHotelService{
         return hotelDAO.save(hm);
     }
 
+    @Override
+    public List<Hotel> findAllByNameOrLocation(String text) {
+        return hotelDAO.findAllByNameOrLocation(text);
+    }
+
     
     
 }

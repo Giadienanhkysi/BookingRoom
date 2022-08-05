@@ -26,9 +26,8 @@ public class HotelByPlace extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         response.setCharacterEncoding("utf-8");
-        String location = request.getParameter("location");
-        String url = "danhSachHotel.html?location=" + URLEncoder.encode(URLDecoder.decode(location, "utf-8"), "utf-8");
-        response.sendRedirect(url);
+        RequestDispatcher rd = request.getRequestDispatcher("danhSachHotel.jsp");
+        rd.forward(request, response);
     }
 
     

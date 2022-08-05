@@ -16,8 +16,12 @@ public interface IAmenities_RoomsService {
     List<Amenities> findAmenitiesByRoomId(Integer id);
 
     Integer save(Amenities_Rooms amenities_Rooms);
+    
+    void saveMultiple(List<Amenities_Rooms> amrs);
 
     void update(Amenities_Rooms amenities_Rooms);
 
     void delete(Amenities_Rooms ar);
+
+    public void deleteByRoomId(Integer roomId);
 }

@@ -372,6 +372,7 @@ html a:hover{
     min-width: 216px;
     text-align: center;
     top: 20%;
+    box-shadow: 0 0 7px -2px black;
 }
 
 .discovery-label{

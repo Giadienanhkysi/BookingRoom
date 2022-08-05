@@ -8,6 +8,7 @@ public interface IAdminService {
     List<Admin> findAll();
     Admin findById(Integer id);
     Admin save(Admin admin);
+    Admin findByUsernameAndPassword(String username, String password);
     Admin update(Admin admin);    
     void delete(Integer id);
 }

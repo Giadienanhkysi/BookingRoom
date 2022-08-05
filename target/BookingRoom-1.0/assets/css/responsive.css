@@ -95,6 +95,7 @@
     .close-chi-tiet-phong{
         top: -2rem;
     }
+
     .dat-phong__chon-ngay{
         width: 90%;
     }
@@ -102,7 +103,6 @@
         margin-top: 0;
         font-size: 2.8rem;
     }
-
 }
 
 @media (max-width:1023px) {

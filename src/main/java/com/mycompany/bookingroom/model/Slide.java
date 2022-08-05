@@ -6,6 +6,7 @@ public class Slide {
 
     private int id;
     private String link, title, description;
+    private Integer group;
     private Timestamp created_at, updated_at;
 
     public Slide() {
@@ -60,6 +61,14 @@ public class Slide {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getGroup() {
+        return group;
+    }
+
+    public void setGroup(Integer group) {
+        this.group = group;
     }
     
     

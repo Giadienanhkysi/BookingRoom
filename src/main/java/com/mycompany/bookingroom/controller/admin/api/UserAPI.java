@@ -17,7 +17,7 @@ import com.mycompany.bookingroom.service.IUserService;
 import javax.inject.Inject;
 import com.mycompany.bookingroom.util.JsonUtil;
 
-@WebServlet(name = "UserAPI", urlPatterns = {"/api-admin-user"})
+@WebServlet(name = "AdminUserAPI", urlPatterns = {"/api-admin-user"})
 public class UserAPI extends HttpServlet {
 
     @Inject

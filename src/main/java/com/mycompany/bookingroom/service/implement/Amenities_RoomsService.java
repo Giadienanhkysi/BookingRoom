@@ -49,4 +49,16 @@ public class Amenities_RoomsService implements IAmenities_RoomsService {
     public List<Amenities> findAmenitiesByRoomId(Integer id) {
         return amenities_RoomsDAO.findAmenitiesByRoomId(id);
     }
+
+    @Override
+    public void saveMultiple(List<Amenities_Rooms> amrs) {
+        for(Amenities_Rooms ar: amrs){
+            save(ar);
+        }
+    }
+
+    @Override
+    public void deleteByRoomId(Integer roomId) {
+        amenities_RoomsDAO.deleteByRoomId(roomId);
+    }
 }

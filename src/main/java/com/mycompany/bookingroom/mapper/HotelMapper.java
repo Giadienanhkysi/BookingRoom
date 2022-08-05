@@ -18,6 +18,7 @@ public class HotelMapper implements RowMapper<Hotel>{
             hotel.setAddress(resultSet.getString("ADDRESS"));
             hotel.setDescription(resultSet.getString("DESCRIPTION"));
             hotel.setStar(resultSet.getInt("STAR"));
+            hotel.setPhone(resultSet.getString("PHONE"));
             return hotel;
         } catch (SQLException ex) {
             Logger.getLogger(HotelMapper.class.getName()).log(Level.SEVERE, null, ex);

@@ -3,8 +3,10 @@ package com.mycompany.bookingroom.dao.implement;
 import java.util.List;
 
 import com.mycompany.bookingroom.dao.IBookingDAO;
+import com.mycompany.bookingroom.mapper.BookingDetailsMapper;
 import com.mycompany.bookingroom.mapper.BookingMapper;
 import com.mycompany.bookingroom.model.Booking;
+import com.mycompany.bookingroom.model.BookingDetails;
 
 public class BookingDAO extends AbstractDAO<Booking> implements IBookingDAO {
 
@@ -20,7 +22,8 @@ public class BookingDAO extends AbstractDAO<Booking> implements IBookingDAO {
             sql += " order by " + params[1].toString() + " " + params[0].toString();
         return query(sql, new BookingMapper());
     }
-
+    
+    
     @Override
     public List<Booking> findByUserId(Integer id, Object ...params) {
         String sql = "SELECT * FROM Booking WHERE User_ID = ? ";
@@ -55,6 +58,24 @@ public class BookingDAO extends AbstractDAO<Booking> implements IBookingDAO {
     public void delete(Integer id) {
         String sql = "DELETE FROM Booking WHERE id = ?";
         update(sql, id);
+    }
+
+    @Override
+    public List<BookingDetails> findAllBookingDetails(Object... params) {
+        String sql = "SELECT DISTINCT b.id AS ID, u.id AS UserId, r.id AS RoomId, h.id AS HotelId, " +
+"u.FIRST_NAME AS FirstName, u.LAST_NAME AS LastName, u.Phone, h.name AS HotelName, " +
+"t.name AS RoomType, (r.price - r.PRICE * r.DISCOUNT) AS RoomPrice, b.QTY AS Quantity, " +
+"b.CHECK_IN, b.CHECK_OUT, b.DISCOUNT_PERCENT, b.CREATED_AT, b.UPDATED_AT, b.STATUS " +
+"FROM dbo.Rooms r, dbo.Types t, dbo.Users u, dbo.Booking b, dbo.Hotels h " +
+"WHERE b.USER_ID = u.id AND  r.ID = b.ROOM_ID AND r.TYPES_ID = t.ID AND r.HOTEL_ID = h.ID";
+        for(Object ob: params){
+            if(ob == null){
+                return query(sql, new BookingDetailsMapper());                
+            }
+        }
+        if(params[0].toString().equalsIgnoreCase("asc") || params[0].toString().equalsIgnoreCase("desc"))
+            sql += " order by " + params[1].toString() + " " + params[0].toString();
+        return query(sql, new BookingDetailsMapper());
     }
 
     

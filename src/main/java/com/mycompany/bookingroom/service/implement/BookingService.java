@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.mycompany.bookingroom.dao.IBookingDAO;
 import com.mycompany.bookingroom.model.Booking;
+import com.mycompany.bookingroom.model.BookingDetails;
 import com.mycompany.bookingroom.service.IBookingService;
 import javax.inject.Inject;
 
@@ -18,6 +19,7 @@ public class BookingService implements IBookingService {
         return bookingDAO.findAll(params);
     }
 
+    
     @Override
     public Booking findById(Integer id) {
         return bookingDAO.findById(id);
@@ -50,4 +52,9 @@ public class BookingService implements IBookingService {
     public List<Booking> findByUserId(Integer id, Object ...params) {
         return bookingDAO.findByUserId(id, params);
     }
+    @Override
+    public List<BookingDetails> findAllBookingDetails(Object ...params){
+        return  bookingDAO.findAllBookingDetails(params);
+    }
+
 }

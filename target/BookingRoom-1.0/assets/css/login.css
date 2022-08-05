@@ -71,8 +71,8 @@
 }
 
 .account__input:focus{
-    border: 1px solid red;
-    box-shadow: 0 0 2px 2px rgba(255, 0, 0, 0.2);
+    border: 1px solid #1dbfaf;;
+    box-shadow: 0 0 2px 2px rgba(29, 191, 175, 0.2);
 }
 
 .account__icon{
@@ -171,4 +171,7 @@
 }
 .margin-t42{
     margin: 4.2rem 0 0 0;    
+}
+.gender-item{
+    font-size: 1.6rem;
 }

@@ -1,5 +1,5 @@
 import diChuyen, { tinhGia2 } from "./base.js";
-import { falsyFilter, formatPrice, tinhGia, getParentElement } from "./base.js";
+import { falsyFilter, formatPrice, tinhGia, getParentElement, host } from "./base.js";
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
@@ -9,7 +9,7 @@ const timPhongBtn = $('.tim-phong-btn')
 const queryString = decodeURIComponent(window.location.search);
 const urlParams = new URLSearchParams(queryString);
 const hotelId = urlParams.get("id");
-var host = "http://127.0.0.1:8080/bookingroom/";
+
 var url = {
     hotel: "api-hotel?id=",
     hotelImage: "api-image?hotelId=",
@@ -93,7 +93,6 @@ function hienDatPhong() {
         };
     }
 }
-
 function renderDatPhong(element, datPhongBtn, room) {
     let phong_dat = getParentElement(datPhongBtn, '.phong__dat')
     let soluong = phong_dat.querySelector('.so-luong-phong')
@@ -205,8 +204,8 @@ function renderDatPhong(element, datPhongBtn, room) {
                 </div>
             </div>
             <div class="booking__btn">
-                <button class="btn--small booking__huy-btn">Hủy</button>
-                <button class="btn--small booking__xac-nhan-btn">Xác nhận</button>
+                <button class="btn--m booking__huy-btn">Hủy</button>
+                <button class="btn--m booking__xac-nhan-btn">Xác nhận</button>
             </div>
 
         </div>
@@ -214,7 +213,7 @@ function renderDatPhong(element, datPhongBtn, room) {
     `
     renderTongTien(phong_dat, soluong, checkIn, checkOut)
     anChiTiet('.booking__huy-btn');
-    postBooking(url, 1);
+    postBooking(url);
 }
 function dayDiff(checkIn, checkOut){
     //chưa tối ưu
@@ -238,7 +237,7 @@ function renderTongTien(phong_dat, soluong, checkIn, checkOut){
     tongTien.innerHTML = formatPrice(phong_dat.querySelector('.gia-hien-tai').getAttribute('price') * soluong.value * dayDiff(checkIn, checkOut))
 
 }
-function postBooking(url, userId, status=1) {
+function postBooking(url, status=1) {
     const btn = $('.booking__xac-nhan-btn')
     let soLuong = +$('#so-luong').innerHTML
     let roomId = +$('.booking__ten-loai-phong').getAttribute('roomId')
@@ -247,39 +246,56 @@ function postBooking(url, userId, status=1) {
     let checkIn = new Date(`${$('.ngay-nhan').value.split('-').reverse().join('-')} ${gioDen}`).getTime()
     let checkOut = new Date(`${$('.ngay-tra').value.split('-').reverse().join('-')} ${gioTra}`).getTime()
     
-    
     btn.onclick = () => {
-
-        let booking = {
-            "user_id": userId,
-            "room_id": roomId,
-            "qty": soLuong,
-            "status": status,
-            "discount_percent": 0,
-            "check_in": checkIn,
-            "check_out": checkOut
-        }
-        var raw = JSON.stringify(booking);
-
-        var requestOptions = {
-            method: 'POST',
-            body: raw,
-        };
-
-        
-        fetch(host + url.booking, requestOptions)
-            .then(response => response.json())
-            .then((response)=> {
-                if(response === null)
-                    alert('Phòng đã được sử dụng vui lòng chọn lại ngày sau đó bấm tìm phòng')
-                else{
-                    alert('Đặt phòng thành công')    
-                }
-                $('.overlay.phong').innerHTML = ''
-                const chiTietPhongWrapper = $(".chi-tiet-phong-wrapper");
-                xuLyAnChiTiet(chiTietPhongWrapper)
+        let user_id = $('#welcome-user')
+        if(user_id ===null){
+            alert('Đăng nhập để đặt phòng')
+            fetch(host + "dang-nhap?action=login", {
+                method: "GET",
+                redirect: 'follow'
             })
-            .catch(error => console.log('error', error));
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                }
+            })
+            .catch(function (err) {
+                console.info(err + " url: " + url);
+            });
+            
+        }else{
+            user_id = user_id.getAttribute('userId');
+            let booking = {
+                "user_id": user_id,
+                "room_id": roomId,
+                "qty": soLuong,
+                "status": status,
+                "discount_percent": 0,
+                "check_in": checkIn,
+                "check_out": checkOut
+            }
+            var raw = JSON.stringify(booking);
+
+            var requestOptions = {
+                method: 'POST',
+                body: raw,
+            };
+
+
+            fetch(host + url.booking, requestOptions)
+                .then(response => response.json())
+                .then((response)=> {
+                    if(response === null)
+                        alert('Phòng đã được sử dụng vui lòng chọn lại ngày sau đó bấm tìm phòng')
+                    else{
+                        alert('Đặt phòng thành công')    
+                    }
+                    $('.overlay.phong').innerHTML = ''
+                    const chiTietPhongWrapper = $(".chi-tiet-phong-wrapper");
+                    xuLyAnChiTiet(chiTietPhongWrapper)
+                })
+                .catch(error => console.log('error', error));
+        }
 
     }
 }
@@ -343,8 +359,6 @@ function renderHotelInfo(url, id) {
 
 function renderImageSlide(url, id, slideName, order, desktop, tablet, mobile) {
     let imageSlide = $$(".danh-sach-anh");
-    console.log(imageSlide[order], 2)
-    console.log(host + url + id)
     fetch(host + url + id)
         .then((response) => response.json())
         .then((images) =>
@@ -384,7 +398,7 @@ async function renderRooms(url, checkIn = '', checkOut = '') {
     if (checkIn && checkOut) {
         date = '&checkIn=' + checkIn + '&checkOut=' + checkOut
     }
-    console.log(host + url.rooms + hotelId + date)
+    
     await fetch(host + url.rooms + hotelId + date)
         .then(response => response.json())
         .then(rooms => rooms.forEach(room => {

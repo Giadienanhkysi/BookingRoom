@@ -1,5 +1,19 @@
 
 //ham xu ly slide
+export const host = ""
+export const url = {
+    hotel: "api-hotel?id=",
+    hotelImage: "api-image?hotelId=",
+    roomImage: "api-image?roomId=",
+    rooms: "api-room?hotelId=",
+    room: "api-room?roomId=",
+    type: "api-type?id=",
+    amenities: "api-amenities-room?roomId=",
+    amenitiesName: "api-amenities?id=",
+    booking: "api-booking",
+    slide: "api-slide"
+};
+
 function diChuyen( huong, thuTuSlide='', margin, soLuong=6){
     var clss = ".slide-item"+ thuTuSlide
     var btn = ".next-btn"+ thuTuSlide
@@ -56,4 +70,5 @@ export function getParentElement (element, selector){
         element = element.parentElement
     }
 }
+
 export default diChuyen

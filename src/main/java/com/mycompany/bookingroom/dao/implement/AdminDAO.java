@@ -44,5 +44,12 @@ public class AdminDAO extends AbstractDAO<Admin> implements IAdminDAO{
     public void delete(Integer id) {
         String sql = "DELETE FROM dbo.Admins WHERE id = ?";
         update(sql, id);
-    }   
+    }  
+    
+    @Override
+    public Admin findByUsernameAndPassword(String username, String password) {
+        String sql = "SELECT * FROM Admins WHERE username = ? and password=?";
+        List<Admin> admins = query(sql, new AdminMapper(), username, password);
+        return admins.size() > 0 ? admins.get(0) : null;
+    }
 }

@@ -14,4 +14,6 @@ public interface IAmenities_RoomsDAO {
     Integer save(Amenities_Rooms ar);
     void update(Amenities_Rooms ar);
     void delete(Amenities_Rooms ar);
+    void deleteByRoomId(Integer roomId);
+
 }

@@ -8,28 +8,28 @@ public class Hotel extends AbstractModel<Hotel>{
 //    private String thumnail;
 //    private Double price;
     private int star;
+    private String phone;
     
     public Hotel() {
     }
 
-    public Hotel(Integer id, String name, String address, String description, int star) {
-        this.id = id;
+    public Hotel(String name, String address, String description, int star, String phone) {
+        super();
         this.name = name;
         this.address = address;
         this.description = description;
-//        this.thumnail = thumnail;
-//        this.price = price;
         this.star = star;
+        this.phone = phone;
     }
 
-    public Hotel(String name, String address, String description, int star) {
-        this.name = name;
-        this.address = address;
-        this.description = description;
-//        this.thumnail = thumnail;
-//        this.price = price;
-        this.star = star;
+    public String getPhone() {
+        return phone;
     }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     
     public int getStar() {
         return star;

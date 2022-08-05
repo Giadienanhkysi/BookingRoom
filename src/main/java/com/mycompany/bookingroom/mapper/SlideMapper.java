@@ -17,6 +17,7 @@ public class SlideMapper implements RowMapper<Slide>{
             slide.setLink(resultSet.getString("LINK"));
             slide.setTitle(resultSet.getString("TITLE"));
             slide.setDescription(resultSet.getString("DESCRIPTION"));
+            slide.setGroup(resultSet.getInt("GRP"));
             slide.setCreated_at(resultSet.getTimestamp("CREATED_AT"));
             slide.setUpdated_at(resultSet.getTimestamp("UPDATED_AT"));
             return slide;

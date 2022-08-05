@@ -1,18 +1,29 @@
 package com.mycompany.bookingroom.model;
 
 public class Image {
-    private Integer id, room_id, hotel_id;
+    private Integer id, room_id, hotel_id, slide_id;
     private String link;
 
     public Image() {
 
     }
 
-    public Image(Integer id, Integer room_id, Integer hotel_id, String link) {
+    public Image(Integer id, Integer room_id, Integer hotel_id, Integer slide_id, String link) {
         this.id = id;
         this.room_id = room_id;
         this.hotel_id = hotel_id;
+        this.slide_id = slide_id;
         this.link = link;
+    }
+
+    
+
+    public Integer getSlide_id() {
+        return slide_id;
+    }
+
+    public void setSlide_id(Integer slide_id) {
+        this.slide_id = slide_id;
     }
 
     public Integer getId() {

@@ -1,9 +1,9 @@
-import {falsyFilter, formatPrice, tinhGia} from './base.js'
+import {falsyFilter, formatPrice, tinhGia, host} from './base.js'
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const queryString = decodeURIComponent(window.location.search)
 const urlParams = new URLSearchParams(queryString);
-const host = 'http://127.0.0.1:8080/bookingroom/'
+
 // function formatPrice(price){
 //     return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(price);
 // }
@@ -54,7 +54,7 @@ async function renderAHotel(url, hotelList, hotel){
     
     hotelList.innerHTML +=  
     `<div class="col l-3 m-4 c-6" >
-        <a href="chiTietHotel.html?id=${hotel.id}" class="khach-san">
+        <a href="chi-tiet-khach-san?id=${hotel.id}" class="khach-san">
         <div class="khach-san__img" style="background-image: url(${falsyFilter(image && host + image)});"></div>
             <h4 class="khach-san__ten">${hotel.name}</h4>
             <div class="khach-san__gia">

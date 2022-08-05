@@ -19,6 +19,13 @@ public class HotelDAO extends AbstractDAO<Hotel> implements IHotelDAO{
         String sql = "SELECT * FROM dbo.Hotels WHERE address like ?";
         return query(sql, new HotelMapper(), location);
     }
+    
+    @Override
+    public List<Hotel> findAllByNameOrLocation(String text){
+        text = "%" + text + "%";
+        String sql = "SELECT * FROM dbo.Hotels WHERE address like ? or name like ?";
+        return query(sql, new HotelMapper(), text, text);
+    }
     @Override
     public Hotel findById(Integer id) {         
         String sql = "SELECT * FROM dbo.Hotels WHERE id = ?";        
@@ -28,15 +35,15 @@ public class HotelDAO extends AbstractDAO<Hotel> implements IHotelDAO{
 
     @Override
     public Integer save(Hotel hotel) {        
-        String sql = "INSERT dbo.Hotels(NAME,ADDRESS,DESCRIPTION,STAR)VALUES(?, ?, ?, ?)";            
-        return insert(sql, hotel.getName(), hotel.getAddress(),hotel.getDescription(), hotel.getStar());
+        String sql = "INSERT dbo.Hotels(NAME,ADDRESS, PHONE, DESCRIPTION,STAR)VALUES(?, ?, ?, ?, ?)";
+        return insert(sql, hotel.getName(), hotel.getAddress(), hotel.getPhone(), hotel.getDescription(), hotel.getStar());
     }
 
     @Override
     public void update(Hotel hotel) {
-        String sql = "UPDATE dbo.Hotels SET Name = ? , Address = ?, Description = ?, Star = ? "
+        String sql = "UPDATE dbo.Hotels SET Name = ? , Address = ?, Phone = ?, Description = ?, Star = ? "
                 + " WHERE id = ?";        
-        update(sql, hotel.getName(), hotel.getAddress(), hotel.getDescription(), hotel.getStar(), hotel.getId());
+        update(sql, hotel.getName(), hotel.getAddress(), hotel.getPhone(), hotel.getDescription(), hotel.getStar(), hotel.getId());
     }
 
     @Override

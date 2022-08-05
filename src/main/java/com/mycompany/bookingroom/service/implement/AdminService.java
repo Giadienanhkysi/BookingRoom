@@ -3,7 +3,6 @@ package com.mycompany.bookingroom.service.implement;
 import java.util.List;
 
 import com.mycompany.bookingroom.dao.IAdminDAO;
-import com.mycompany.bookingroom.dao.implement.AdminDAO;
 import com.mycompany.bookingroom.model.Admin;
 import com.mycompany.bookingroom.service.IAdminService;
 import java.sql.Timestamp;
@@ -44,5 +43,10 @@ public class AdminService implements IAdminService{
     @Override
     public void delete(Integer id) {
         adminDAO.delete(id);
+    }
+
+    @Override
+    public Admin findByUsernameAndPassword(String username, String password) {
+        return adminDAO.findByUsernameAndPassword(username, password);
     }
 }

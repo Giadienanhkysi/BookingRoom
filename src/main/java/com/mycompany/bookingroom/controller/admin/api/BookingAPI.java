@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mycompany.bookingroom.model.Booking;
+import com.mycompany.bookingroom.model.BookingDetails;
 import com.mycompany.bookingroom.service.IBookingService;
 import com.mycompany.bookingroom.util.JsonUtil;
 import javax.inject.Inject;
@@ -30,14 +31,20 @@ public class BookingAPI extends HttpServlet {
         response.setHeader("Access-Control-Allow-Origin", "*");
         String mode = request.getParameter("mode");
         String column = request.getParameter("column");
-        request.setAttribute("booking", bookingService.findAll(mode, column));
-        try ( OutputStream out = response.getOutputStream()) {
-            List<Booking> booking = (List<Booking>) request.getAttribute("booking");
-            ObjectMapper mapper = new ObjectMapper();
+        String option = request.getParameter("option");
+        OutputStream out = response.getOutputStream();
+        ObjectMapper mapper = new ObjectMapper();
+        if(option != null && option.equals("details")){
+            List<BookingDetails> booking = (List<BookingDetails>)bookingService.findAllBookingDetails(mode, column);
             mapper.writeValue(out, booking);
+        }else{
+            List<Booking> booking = (List<Booking>) bookingService.findAll(mode, column);
+            mapper.writeValue(out, booking);    
         }
+        
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
